@@ -37,6 +37,9 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Container>
+          <header className="mb-5">
+            <h1>React App Cantina</h1>
+          </header>
 
           {/* Home */}
           <Switch>
