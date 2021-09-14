@@ -16,16 +16,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Liste des recettes</h1>
-      {recettes &&
-        recettes.map((recette) => (
-          <div key={recette.id}>
-            <h2>{recette.titre}</h2>
-            <p>{recette.description}</p>
-          </div>
-        ))}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Container>
+          <header className="mb-5">
+           
+          </header>
+
+
+        </Container>
+      </div>
+    </BrowserRouter>
   );
 }
 
