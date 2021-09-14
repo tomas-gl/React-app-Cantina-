@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.recette-link {
+  text-decoration: none !important;
+  color: #000000 !important;
+  transition: 0.5s;
+}

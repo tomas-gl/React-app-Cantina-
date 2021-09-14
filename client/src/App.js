@@ -23,40 +23,20 @@ import Home from "./views/Home";
 import Recipe from "./views/Recipe";
 
 function App() {
-  const [recettes, setRecettes] = useState(null);
+  // const [recettes, setRecettes] = useState(null);
 
-  useEffect(() => {
-    fetch("http://localhost:9000/api/recipes")
-      .then((res) => res.json())
-      .then((recipes) => {
-        setRecettes(recipes);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:9000/api/recipes")
+  //     .then((res) => res.json())
+  //     .then((recipes) => {
+  //       setRecettes(recipes);
+  //     });
+  // }, []);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Container>
-          <header className="mb-5">
-            <Navbar bg="dark" variant="dark">
-              <NavLink
-                className="nav-link"
-                activeStyle={{ color: "orange" }}
-                to="/"
-                exact
-              >
-                Home
-              </NavLink>
-              <NavLink
-                className="nav-link"
-                activeStyle={{ color: "orange" }}
-                to="/recherche"
-                exact
-              >
-                Liste des recettes
-              </NavLink>
-            </Navbar>
-          </header>
 
           {/* Home */}
           <Switch>
