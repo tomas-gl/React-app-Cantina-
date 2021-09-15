@@ -32,15 +32,6 @@ const Recipe = () => {
     return (
       <>
         <Row>
-          <Col lg={12}>
-            <Link
-              to={{
-                pathname: "/",
-              }}
-            >
-              Retour à l'accueil
-            </Link>
-          </Col>
           <Col lg={8} xs={12}>
             <div
               className="recette-header"

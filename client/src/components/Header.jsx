@@ -14,10 +14,10 @@ import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar className="px-5 nav-cantina">
+    <Navbar className="px-sm-5 px-2 nav-cantina">
       <Navbar.Brand>
         <img src={img} width="60" className="nav-image" />
-        <span className="px-4 nav-title">Cantina Application</span>
+        <span className="d-md-inline-block d-none px-4 nav-title">Cantina Application</span>
       </Navbar.Brand>
       <Nav className="ms-auto navbar-nav">
         <NavLink

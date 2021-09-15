@@ -60,6 +60,13 @@ code {
   transition: 0.5s;
 }
 
+.img-container{
+  background-size: cover;
+  background-position: 50%;
+  height: 275px;
+  overflow: hidden;
+}
+
 .recette-header {
   height: 350px;
   width: 100%;

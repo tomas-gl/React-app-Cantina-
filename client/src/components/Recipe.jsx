@@ -10,7 +10,7 @@ const Recipe = ({ recettes }) => {
     <>
       {recettes &&
         recettes.map((recette, index) => (
-          <Col key={index} lg={3} md={6} xs={12} className="mt-3">
+          <Col key={index} xl={3} lg={4} md={6} xs={12} className="mt-3">
             <Link
               to={{
                 pathname: `/recipe/${recette.id}`,
@@ -18,7 +18,9 @@ const Recipe = ({ recettes }) => {
               className="recette-link"
             >
               <Card>
-                <Card.Img variant="top" src={recette.photo} />
+                <div className="img-container">
+                  <Card.Img variant="top" src={recette.photo} />
+                </div>
                 <Card.Body className="px-2">
                   <Card.Title>{recette.titre}</Card.Title>
                   <Card.Text className="m-0">
