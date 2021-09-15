@@ -1,6 +1,9 @@
 // React imports
 import { useEffect, useState } from "react";
 
+// Components imports
+import Header from "./components/Header"; 
+
 //CSS imports
 import "./App.css";
 
@@ -37,9 +40,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Container>
-          <header className="mb-5">
-            <h1>React App Cantina</h1>
-          </header>
+          <Header />
 
           {/* Home */}
           <Switch>
