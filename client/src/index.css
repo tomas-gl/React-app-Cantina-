@@ -19,7 +19,8 @@ code {
 }
 
 .App {
-  background: #bb9a70;
+  background: #50483d;
+  min-height: 100vh;
 }
 
 .nav-cantina {
@@ -43,14 +44,14 @@ code {
 }
 
 .nav-link:hover {
-  background: #bb9a70;
+  background: #50483d;
   color: #f5f5f5 !important;
   transition: 0.5s ease;
 }
 
 .selected-nav {
   border-radius: 5px;
-  background: #bb9a70;
+  background: #50483d;
   color: #f5f5f5 !important;
 }
 
@@ -58,6 +59,10 @@ code {
   text-decoration: none !important;
   color: #000000 !important;
   transition: 0.5s;
+}
+
+.card-cantina{
+  box-shadow: 0px 0px 10px 0px #000000;
 }
 
 .img-container{

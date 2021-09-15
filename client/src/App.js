@@ -1,8 +1,5 @@
-// React imports
-import { useEffect, useState } from "react";
-
 // Components imports
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 
 // Views imports
 import Home from "./views/Home";
@@ -13,17 +10,10 @@ import AddRecipe from "./views/AddRecipe";
 import "./App.css";
 
 // Router-dom imports
-import {
-  BrowserRouter,
-  Route,
-  NavLink,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // Bootstrap imports
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
 function App() {
@@ -47,7 +37,7 @@ function App() {
             <Route path="/" component={Home} exact>
               <Home></Home>
             </Route>
-
+            {/* Add Recipe */}
             <Route path="/add" component={AddRecipe} exact>
               <AddRecipe></AddRecipe>
             </Route>

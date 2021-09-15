@@ -1,0 +1,9 @@
+.container-form{
+    max-width: 800px;
+    margin: auto;
+}
+
+form{
+    background-color: #f1d9bb;
+    border-radius: 25px;
+}

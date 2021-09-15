@@ -1,5 +1,5 @@
 // Bootstrap/Icons imports
-import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 
 // Router-dom imports
@@ -17,7 +17,7 @@ const Recipe = ({ recettes }) => {
               }}
               className="recette-link"
             >
-              <Card>
+              <Card className="card-cantina my-3">
                 <div className="img-container">
                   <Card.Img variant="top" src={recette.photo} />
                 </div>

@@ -1,5 +1,5 @@
 // Components imports
-import FormRecipe from "../components/FormRecipe";
+import FormRecipe from "../components/FormRecipe/FormRecipe";
 
 const AddRecipe = () => {
   return (

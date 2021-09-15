@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Router-dom imports
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Bootstrap/Icons imports
-import { Button, Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 const Recipe = () => {
   const { id } = useParams();

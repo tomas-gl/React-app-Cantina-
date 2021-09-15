@@ -2,14 +2,13 @@
 import { useState, useEffect } from "react";
 
 // Components imports
-import Recipe from "../components/Recipe";
+import Recipe from "../components/Recipe/Recipe";
 
 // Axios imports
 import axios from "axios";
 
 // Bootstrap/Icons imports
-import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
-import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
+import { Row, Col } from "react-bootstrap";
 
 const Home = () => {
   const url = "http://localhost:9000/api/recipes";
@@ -31,7 +30,7 @@ const Home = () => {
     <>
       <Row>
         <Col xs={12} className="my-4">
-          <h1 style={{color: "#ffffff"}}>Liste des recettes</h1>
+          <h1 style={{ color: "#ffffff" }}>Liste des recettes</h1>
         </Col>
         <Recipe recettes={recettes} />
       </Row>
