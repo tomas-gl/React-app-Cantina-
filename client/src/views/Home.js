@@ -36,17 +36,6 @@ const Home = () => {
         <Col xs={12}>
           <h1>Liste des recettes</h1>
         </Col>
-        <Col xs={12}>
-          <Link
-            to={{
-              pathname: '/add',
-            }}
-          >
-            <Button variant="outline-info">
-                Ajouter une recette
-            </Button>
-            </Link>
-        </Col>
             <Recipe recettes={recettes}/>
       </Row>
     </>

@@ -40,8 +40,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Container>
           <Header />
+          <Container>
 
           {/* Home */}
           <Switch>
