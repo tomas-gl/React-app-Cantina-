@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // Components imports
-import Recipe from "../components/Recipe"; 
+import Recipe from "../components/Recipe";
 
 // Axios imports
 import axios from "axios";
@@ -33,10 +33,10 @@ const Home = () => {
   return (
     <>
       <Row>
-        <Col xs={12}>
-          <h1>Liste des recettes</h1>
+        <Col xs={12} className="my-4">
+          <h1 style={{color: "#ffffff"}}>Liste des recettes</h1>
         </Col>
-            <Recipe recettes={recettes}/>
+        <Recipe recettes={recettes} />
       </Row>
     </>
   );

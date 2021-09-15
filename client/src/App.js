@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Components imports
-import Header from "./components/Header"; 
+import Header from "./components/Header";
 
 // Views imports
 import Home from "./views/Home";
@@ -40,9 +40,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-          <Header />
-          <Container>
-
+        <Header />
+        <Container>
           {/* Home */}
           <Switch>
             <Route path="/" component={Home} exact>
