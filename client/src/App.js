@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 // Components imports
 import Header from "./components/Header"; 
 
+// Views imports
+import Home from "./views/Home";
+import Recipe from "./views/Recipe";
+import AddRecipe from "./views/AddRecipe";
+
 //CSS imports
 import "./App.css";
 
@@ -20,10 +25,6 @@ import {
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-
-// Views imports
-import Home from "./views/Home";
-import Recipe from "./views/Recipe";
 
 function App() {
   // const [recettes, setRecettes] = useState(null);
@@ -46,6 +47,10 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact>
               <Home></Home>
+            </Route>
+
+            <Route path="/add" component={AddRecipe} exact>
+              <AddRecipe></AddRecipe>
             </Route>
 
             {/* Recipe */}
