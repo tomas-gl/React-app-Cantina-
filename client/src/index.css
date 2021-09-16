@@ -19,7 +19,7 @@ code {
 }
 
 .App {
-  background: #50483d;
+  background: url('images/wood-background.jpg') no-repeat center center fixed;
   min-height: 100vh;
 }
 

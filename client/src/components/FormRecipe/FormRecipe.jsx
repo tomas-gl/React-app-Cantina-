@@ -23,12 +23,13 @@ const schema = yup.object().shape({
     yup.object({
       nom: yup.string().required(),
     })
-  ),
+  ).min(1),
+    // ingredients: yup.number().required("Veuillez choisir un nombre de personnes"),
   etapes: yup.array().of(
     yup.object({
       texte: yup.string().required(),
     })
-  ),
+  ).min(1),
 });
 
 const FormRecipe = () => {
