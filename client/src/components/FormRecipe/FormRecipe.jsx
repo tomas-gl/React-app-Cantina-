@@ -57,7 +57,23 @@ const FormRecipe = () => {
         }}
         onSubmit={(data) => {
           // make async call
+          let arrayIngredients = [];
+          data.ingredients.forEach(el => {
+            let arrayIngredient = []
+            arrayIngredient.push(el.quantite + el.unite);
+            arrayIngredient.push(el.nom);
+            // console.log(arrayIngredient)
+            arrayIngredients.push(arrayIngredient);
+          })
+          data.ingredients = arrayIngredients;
+
+          let arrayEtapes = [];
+          data.etapes.forEach(el => {
+            arrayEtapes.push(el.texte);
+          })
+          data.etapes = arrayEtapes;
           console.log("submit", data);
+          // arrayIngredients.push(data.ingredients[])
         }}
         validate={(values) => {
           const errors = {};
@@ -68,7 +84,7 @@ const FormRecipe = () => {
         {({ values, errors }) => (
           <Form className="my-5 p-5">
             <Row className="mb-3">
-              <Col xl={6} className="my-3">
+              <Col md={6} className="my-3">
                 <Field
                   placeholder="Titre"
                   className="w-100 my-2 form-control"
@@ -79,7 +95,7 @@ const FormRecipe = () => {
                   {errors.titre}
                 </span>
               </Col>
-              <Col xl={6} className="my-3">
+              <Col md={6} className="my-3">
                 <Field
                   placeholder="Niveau"
                   className="w-100 my-2 form-control"
@@ -98,7 +114,7 @@ const FormRecipe = () => {
                   {errors.niveau}
                 </span>
               </Col>
-              <Col xl={12} className="my-3">
+              <Col md={12} className="my-3">
                 <Field
                   placeholder="Description"
                   className="w-100 my-2 form-control"
@@ -109,7 +125,7 @@ const FormRecipe = () => {
                   {errors.description}
                 </span>
               </Col>
-              <Col xl={6} className="my-3">
+              <Col md={6} className="my-3">
                 <Field
                   placeholder="Nombre de personnes"
                   className="w-100 my-2 form-control"
@@ -121,7 +137,7 @@ const FormRecipe = () => {
                   {errors.personnes}
                 </span>
               </Col>
-              <Col xl={6} className="my-3">
+              <Col md={6} className="my-3">
                 <Field
                   placeholder="Temps de préparation (min)"
                   className="w-100 my-2 form-control"
@@ -133,7 +149,7 @@ const FormRecipe = () => {
                   {errors.tempsPreparation}
                 </span>
               </Col>
-              <Col xl={12} className="my-3">
+              <Col md={12} className="my-3">
                 <FieldArray name="ingredients">
                   {(arrayHelpers) => (
                     <div>
@@ -156,7 +172,7 @@ const FormRecipe = () => {
                         return (
                           <div key={ingredient.id}>
                             <Row>
-                              <Col xl={4}>
+                              <Col md={4}>
                                 <Field
                                   placeholder="Quantité"
                                   className="w-100 my-2 form-control"
@@ -165,7 +181,7 @@ const FormRecipe = () => {
                                   name={`ingredients.${index}.quantite`}
                                 ></Field>
                               </Col>
-                              <Col xl={3}>
+                              <Col md={3}>
                                 <Field
                                   placeholder="Unité"
                                   className="w-100 my-2 form-control"
@@ -182,7 +198,7 @@ const FormRecipe = () => {
                                   <option value="l">l</option>
                                 </Field>
                               </Col>
-                              <Col xl={4}>
+                              <Col md={4}>
                                 <Field
                                   placeholder="Ingrédient"
                                   className="w-100 my-2 form-control"
@@ -190,7 +206,7 @@ const FormRecipe = () => {
                                   name={`ingredients.${index}.nom`}
                                 ></Field>
                               </Col>
-                              <Col xl={1} style={{ lineHeight: "3" }}>
+                              <Col md={1} style={{ lineHeight: "3" }}>
                                 <Button
                                   onClick={() => arrayHelpers.remove(index)}
                                   variant="danger"
@@ -207,7 +223,7 @@ const FormRecipe = () => {
                 </FieldArray>
                 <span type="invalid" className="error-msg"></span>
               </Col>
-              <Col xl={12} className="my-3">
+              <Col md={12} className="my-3">
                 <FieldArray name="etapes">
                   {(arrayHelpers) => (
                     <div>
@@ -225,7 +241,7 @@ const FormRecipe = () => {
                         return (
                           <div key={etape.id}>
                             <Row>
-                              <Col xl={11}>
+                              <Col md={11}>
                                 <Field
                                   placeholder="Étapes"
                                   className="w-100 my-2 form-control"
@@ -233,7 +249,7 @@ const FormRecipe = () => {
                                   name={`etapes.${index}.texte`}
                                 ></Field>
                               </Col>
-                              <Col xl={1} style={{ lineHeight: "4" }}>
+                              <Col md={1} style={{ lineHeight: "4" }}>
                                 <Button
                                   onClick={() => arrayHelpers.remove(index)}
                                   variant="danger"
@@ -250,7 +266,7 @@ const FormRecipe = () => {
                 </FieldArray>
                 <span type="invalid" className="error-msg"></span>
               </Col>
-              <Col xl={12} className="my-3">
+              <Col md={12} className="my-3">
                 <Field
                   placeholder="Photo"
                   className="w-100 my-2 form-control"
