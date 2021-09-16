@@ -4,6 +4,7 @@ import "../FormRecipe/style.css";
 // Bootstrap/Icons imports
 import { Button, Row, Col } from "react-bootstrap";
 import { ImCross } from "react-icons/im";
+import { BsPlusCircleFill } from "react-icons/bs";
 
 // Formik imports
 import { Formik, Form, Field, FieldArray } from "formik";
@@ -11,8 +12,23 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import * as yup from "yup";
 
 const schema = yup.object().shape({
-  // titre: yup.string().required(),
-  // niveau: yup.string().required(),
+  titre: yup.string().required("Veuillez rentrer un titre"),
+  niveau: yup.string().required("Veuillez sélectionner un niveau"),
+  description: yup.string().required("Veuillez rentrer une description"),
+  personnes: yup.number().required("Veuillez choisir un nombre de personnes"),
+  tempsPreparation: yup
+    .number()
+    .required("Veuillez choisir un temps de préparation"),
+  ingredients: yup.array().of(
+    yup.object({
+      nom: yup.string().required(),
+    })
+  ),
+  etapes: yup.array().of(
+    yup.object({
+      texte: yup.string().required(),
+    })
+  ),
 });
 
 const FormRecipe = () => {
@@ -25,22 +41,26 @@ const FormRecipe = () => {
         initialValues={{
           titre: "",
           niveau: "",
+          description: "",
+          personnes: "",
+          tempsPreparation: "",
           ingredients: [
             { quantite: "", unite: "", nom: "", id: "" + Math.random() },
           ],
+          etapes: [
+            {
+              texte: "",
+              id: "" + Math.random(),
+            },
+          ],
+          photo: "",
         }}
-        onSubmit={(data, { setSubmitting }) => {
-          setSubmitting(true);
+        onSubmit={(data) => {
           // make async call
           console.log("submit", data);
-          setSubmitting(false);
         }}
         validate={(values) => {
           const errors = {};
-
-          if (values.titre.includes("bob")) {
-            errors.titre = "no bob";
-          }
 
           return errors;
         }}
@@ -48,16 +68,18 @@ const FormRecipe = () => {
         {({ values, errors }) => (
           <Form className="my-5 p-5">
             <Row className="mb-3">
-              <Col xl={6}>
+              <Col xl={6} className="my-3">
                 <Field
                   placeholder="Titre"
                   className="w-100 my-2 form-control"
                   type="input"
                   name="titre"
                 />
-                <span type="invalid">{errors.titre}</span>
+                <span type="invalid" className="error-msg">
+                  {errors.titre}
+                </span>
               </Col>
-              <Col xl={6}>
+              <Col xl={6} className="my-3">
                 <Field
                   placeholder="Niveau"
                   className="w-100 my-2 form-control"
@@ -72,18 +94,22 @@ const FormRecipe = () => {
                   <option value="Jedi">Jedi</option>
                   <option value="Maitre">Maître</option>
                 </Field>
-                <span type="invalid">{errors.niveau}</span>
+                <span type="invalid" className="error-msg">
+                  {errors.niveau}
+                </span>
               </Col>
-              <Col xl={12}>
+              <Col xl={12} className="my-3">
                 <Field
                   placeholder="Description"
                   className="w-100 my-2 form-control"
                   as="textarea"
                   name="description"
                 ></Field>
-                <span type="invalid">{errors.niveau}</span>
+                <span type="invalid" className="error-msg">
+                  {errors.description}
+                </span>
               </Col>
-              <Col xl={6}>
+              <Col xl={6} className="my-3">
                 <Field
                   placeholder="Nombre de personnes"
                   className="w-100 my-2 form-control"
@@ -91,9 +117,11 @@ const FormRecipe = () => {
                   as="input"
                   name="personnes"
                 ></Field>
-                <span type="invalid">{errors.niveau}</span>
+                <span type="invalid" className="error-msg">
+                  {errors.personnes}
+                </span>
               </Col>
-              <Col xl={6}>
+              <Col xl={6} className="my-3">
                 <Field
                   placeholder="Temps de préparation (min)"
                   className="w-100 my-2 form-control"
@@ -101,21 +129,17 @@ const FormRecipe = () => {
                   as="input"
                   name="tempsPreparation"
                 ></Field>
-                <span type="invalid">{errors.niveau}</span>
+                <span type="invalid" className="error-msg">
+                  {errors.tempsPreparation}
+                </span>
               </Col>
-              <Col xl={12}>
-                {/* <Field
-                  placeholder="Ingrédients"
-                  className="w-100 my-2 form-control"
-                  type="number"
-                  as="input"
-                  name="ingredients"
-                ></Field> */}
+              <Col xl={12} className="my-3">
                 <FieldArray name="ingredients">
                   {(arrayHelpers) => (
                     <div>
                       <Button
                         variant="success"
+                        className="mb-2"
                         onClick={() =>
                           arrayHelpers.push({
                             quantite: "",
@@ -125,7 +149,8 @@ const FormRecipe = () => {
                           })
                         }
                       >
-                        Ajouter un ingrédient
+                        <BsPlusCircleFill className="mb-1" /> Ajouter un
+                        ingrédient
                       </Button>
                       {values.ingredients.map((ingredient, index) => {
                         return (
@@ -180,30 +205,63 @@ const FormRecipe = () => {
                     </div>
                   )}
                 </FieldArray>
-                <span type="invalid">{errors.niveau}</span>
+                <span type="invalid" className="error-msg"></span>
               </Col>
-              <Col xl={12}>
-                <Field
-                  placeholder="Étapes"
-                  className="w-100 my-2 form-control"
-                  as="textarea"
-                  name="etapes"
-                ></Field>
-                <span type="invalid">{errors.niveau}</span>
+              <Col xl={12} className="my-3">
+                <FieldArray name="etapes">
+                  {(arrayHelpers) => (
+                    <div>
+                      <Button
+                        variant="success"
+                        onClick={() =>
+                          arrayHelpers.push({
+                            id: "" + Math.random(),
+                          })
+                        }
+                      >
+                        <BsPlusCircleFill className="mb-1" /> Ajouter une étape
+                      </Button>
+                      {values.etapes.map((etape, index) => {
+                        return (
+                          <div key={etape.id}>
+                            <Row>
+                              <Col xl={11}>
+                                <Field
+                                  placeholder="Étapes"
+                                  className="w-100 my-2 form-control"
+                                  as="textarea"
+                                  name={`etapes.${index}.texte`}
+                                ></Field>
+                              </Col>
+                              <Col xl={1} style={{ lineHeight: "4" }}>
+                                <Button
+                                  onClick={() => arrayHelpers.remove(index)}
+                                  variant="danger"
+                                >
+                                  <ImCross className="mb-1" />
+                                </Button>
+                              </Col>
+                            </Row>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </FieldArray>
+                <span type="invalid" className="error-msg"></span>
               </Col>
-              <Col xl={12}>
+              <Col xl={12} className="my-3">
                 <Field
                   placeholder="Photo"
                   className="w-100 my-2 form-control"
                   type="file"
                   name="photo"
                 ></Field>
-                <span type="invalid">{errors.niveau}</span>
               </Col>
             </Row>
             <Button type="submit">Submit form</Button>
             <pre>{JSON.stringify(values, null, 2)}</pre>{" "}
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
           </Form>
         )}
       </Formik>

@@ -29,7 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App pb-5">
         <Header />
         <Container>
           {/* Home */}
