@@ -6,9 +6,9 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function handleClick(e) {
-    // e.preventDefault();
-    console.log('The link was clicked.');
-  }
+  // e.preventDefault();
+  console.log("The link was clicked.");
+}
 
 const Recipe = ({ recettes }) => {
   return (
@@ -16,13 +16,13 @@ const Recipe = ({ recettes }) => {
       {recettes &&
         recettes.map((recette, index) => (
           <Col key={index} xl={3} lg={4} md={6} xs={12} className="mt-3">
-            <Link
-              to={{
-                pathname: `/recipe/${recette.id}`,
-              }}
-              className="recette-link"
-            >
-              <Card className="card-cantina my-3">
+            <Card className="card-cantina my-3">
+              <Link
+                to={{
+                  pathname: `/recipe/${recette.id}`,
+                }}
+                className="recette-link"
+              >
                 <div className="img-container">
                   <Card.Img variant="top" src={recette.photo} />
                 </div>
@@ -37,25 +37,25 @@ const Recipe = ({ recettes }) => {
                   <Card.Text className="mb-3">
                     Temps de préparation: {recette.tempsPreparation} minutes
                   </Card.Text>
-                  <Link
-                      to={{
-                        pathname: `/recipe/${recette.id}/edit`,
-                      }}
-                      className="recette-link"
-                      onClick={handleClick}
-                      >
-                    <Button variant="outline-primary" className="mx-2 mb-2">
-                      <FaPencilAlt className="m-1" />
-                      Modifier
-                    </Button>
-                  </Link>
-                  <Button variant="outline-danger" className="mx-2 mb-2">
-                    <FaTrashAlt className="m-1" />
-                    Supprimer
-                  </Button>
                 </Card.Body>
-              </Card>
-            </Link>
+              </Link>
+              <Card.Body className="pt-0 px-0">
+                <Button
+                  variant="outline-primary"
+                  className="mx-2 mb-2"
+                  onClick={handleClick}
+                  as={Link}
+                  to={`/recipe/${recette.id}/edit`}
+                >
+                  <FaPencilAlt className="m-1" />
+                  Modifier
+                </Button>
+                <Button variant="outline-danger" className="mx-2 mb-2">
+                  <FaTrashAlt className="m-1" />
+                  Supprimer
+                </Button>
+              </Card.Body>
+            </Card>
           </Col>
         ))}
     </>

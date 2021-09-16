@@ -19,8 +19,13 @@ code {
 }
 
 .App {
-  background: url('images/wood-background.jpg') no-repeat center center fixed;
+  background: url('images/wood-background.jpg');
   min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .nav-cantina {
