@@ -33,6 +33,7 @@ const schema = yup.object().shape({
 });
 
 const FormRecipe = () => {
+    // if (event) {
   return (
     <div className="container-form">
       <Formik

@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./views/Home";
 import Recipe from "./views/Recipe";
 import AddRecipe from "./views/AddRecipe";
+import EditRecipe from "./views/EditRecipe";
 
 //CSS imports
 import "./App.css";
@@ -40,6 +41,10 @@ function App() {
             {/* Add Recipe */}
             <Route path="/add" component={AddRecipe} exact>
               <AddRecipe></AddRecipe>
+            </Route>
+            {/* Edit Recipe */}
+            <Route path="/recipe/:id/edit/" component={EditRecipe} exact>
+              <EditRecipe></EditRecipe>
             </Route>
 
             {/* Recipe */}

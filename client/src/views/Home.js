@@ -30,7 +30,7 @@ const Home = () => {
     <>
       <Row>
         <Col xs={12} className="my-4">
-          <h1 style={{ color: "#ffffff" }}>Liste des recettes</h1>
+          <h1 className="mb-0" style={{ color: "#ffffff" }}>Liste des recettes</h1>
         </Col>
         <Recipe recettes={recettes} />
       </Row>
