@@ -5,11 +5,6 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 // Router-dom imports
 import { Link } from "react-router-dom";
 
-function handleClick(e) {
-  // e.preventDefault();
-  console.log("The link was clicked.");
-}
-
 const Recipe = ({ recettes }) => {
   return (
     <>
@@ -43,7 +38,6 @@ const Recipe = ({ recettes }) => {
                 <Button
                   variant="outline-primary"
                   className="mx-2 mb-2"
-                  onClick={handleClick}
                   as={Link}
                   to={`/recipe/${recette.id}/edit`}
                 >

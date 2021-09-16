@@ -10,11 +10,8 @@ import axios from "axios";
 // Router-dom imports
 import { useParams } from "react-router-dom";
 
-// Bootstrap/Icons imports
-import { Row, Col } from "react-bootstrap";
-
 const EditRecipe = () => {
-      const { id } = useParams();
+  const { id } = useParams();
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recette, setRecette] = useState(null);
 

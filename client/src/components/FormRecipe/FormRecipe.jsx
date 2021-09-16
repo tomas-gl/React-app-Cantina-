@@ -19,21 +19,28 @@ const schema = yup.object().shape({
   tempsPreparation: yup
     .number()
     .required("Veuillez choisir un temps de préparation"),
-  ingredients: yup.array().of(
-    yup.object({
-      nom: yup.string().required(),
-    })
-  ).min(1),
-    // ingredients: yup.number().required("Veuillez choisir un nombre de personnes"),
-  etapes: yup.array().of(
-    yup.object({
-      texte: yup.string().required(),
-    })
-  ).min(1),
+  ingredients: yup
+    .array()
+    .of(
+      yup.object({
+        nom: yup.string().required("Veuillez rentrer un nom"),
+        quantite: yup.string().required("Veuillez rentrer une quantité"),
+        unite: yup.string().required("Veuillez choisir une unité"),
+      })
+    )
+    .min(1, "Veuillez au moins choisir un ingrédient"),
+  etapes: yup
+    .array()
+    .of(
+      yup.object({
+        texte: yup.string().required("Veuillez renseigner l'étape"),
+      })
+    )
+    .min(1, "Veuillez au moins renseigner une étape"),
 });
 
-const FormRecipe = () => {
-    // if (event) {
+const FormRecipe = ({ onAddRecipe, recettes, setRecettes }) => {
+  // if (recette) {
   return (
     <div className="container-form">
       <Formik
@@ -58,24 +65,21 @@ const FormRecipe = () => {
           photo: "",
         }}
         onSubmit={(data) => {
-          // make async call
           let arrayIngredients = [];
-          data.ingredients.forEach(el => {
-            let arrayIngredient = []
+          data.ingredients.forEach((el) => {
+            let arrayIngredient = [];
             arrayIngredient.push(el.quantite + el.unite);
             arrayIngredient.push(el.nom);
-            // console.log(arrayIngredient)
-            arrayIngredients.push(arrayIngredient);
-          })
-          data.ingredients = arrayIngredients;
 
+            arrayIngredients.push(arrayIngredient);
+          });
+          data.ingredients = arrayIngredients;
           let arrayEtapes = [];
-          data.etapes.forEach(el => {
+          data.etapes.forEach((el) => {
             arrayEtapes.push(el.texte);
-          })
+          });
           data.etapes = arrayEtapes;
-          console.log("submit", data);
-          // arrayIngredients.push(data.ingredients[])
+          onAddRecipe(data);
         }}
         validate={(values) => {
           const errors = {};
@@ -92,6 +96,7 @@ const FormRecipe = () => {
                   className="w-100 my-2 form-control"
                   type="input"
                   name="titre"
+                  value={values.titre}
                 />
                 <span type="invalid" className="error-msg">
                   {errors.titre}
@@ -104,13 +109,14 @@ const FormRecipe = () => {
                   style={{ appearance: "auto" }}
                   as="select"
                   name="niveau"
+                  value={values.niveau}
                 >
                   <option disabled value="">
                     Sélectionner un niveau
                   </option>
                   <option value="padawan">Padawan</option>
-                  <option value="Jedi">Jedi</option>
-                  <option value="Maitre">Maître</option>
+                  <option value="jedi">Jedi</option>
+                  <option value="maitre">Maître</option>
                 </Field>
                 <span type="invalid" className="error-msg">
                   {errors.niveau}
@@ -122,6 +128,7 @@ const FormRecipe = () => {
                   className="w-100 my-2 form-control"
                   as="textarea"
                   name="description"
+                  value={values.description}
                 ></Field>
                 <span type="invalid" className="error-msg">
                   {errors.description}
@@ -134,6 +141,7 @@ const FormRecipe = () => {
                   type="number"
                   as="input"
                   name="personnes"
+                  value={values.personnes}
                 ></Field>
                 <span type="invalid" className="error-msg">
                   {errors.personnes}
@@ -146,13 +154,14 @@ const FormRecipe = () => {
                   type="number"
                   as="input"
                   name="tempsPreparation"
+                  // value={tempsPreparation}
                 ></Field>
                 <span type="invalid" className="error-msg">
                   {errors.tempsPreparation}
                 </span>
               </Col>
               <Col md={12} className="my-3">
-                <FieldArray name="ingredients">
+                <FieldArray name="ingredients" value={values.ingredients}>
                   {(arrayHelpers) => (
                     <div>
                       <Button
@@ -223,10 +232,12 @@ const FormRecipe = () => {
                     </div>
                   )}
                 </FieldArray>
-                <span type="invalid" className="error-msg"></span>
+                <pre type="invalid" className="error-msg">
+                  {JSON.stringify(errors.ingredients, null, 2)}
+                </pre>
               </Col>
               <Col md={12} className="my-3">
-                <FieldArray name="etapes">
+                <FieldArray name="etapes" value={values.etapes}>
                   {(arrayHelpers) => (
                     <div>
                       <Button
@@ -266,7 +277,9 @@ const FormRecipe = () => {
                     </div>
                   )}
                 </FieldArray>
-                <span type="invalid" className="error-msg"></span>
+                <pre type="invalid" className="error-msg">
+                  {JSON.stringify(errors.etapes, null, 2)}
+                </pre>
               </Col>
               <Col md={12} className="my-3">
                 <Field
@@ -274,12 +287,14 @@ const FormRecipe = () => {
                   className="w-100 my-2 form-control"
                   type="file"
                   name="photo"
+                  value={values.photo}
                 ></Field>
               </Col>
             </Row>
             <Button type="submit">Submit form</Button>
-            <pre>{JSON.stringify(values, null, 2)}</pre>{" "}
-            {/* <pre>{JSON.stringify(errors, null, 2)}</pre> */}
+            <pre style={{ color: "white" }}>
+              {JSON.stringify(values, null, 2)}
+            </pre>{" "}
           </Form>
         )}
       </Formik>
