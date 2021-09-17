@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // Components imports
-import Recipe from "../components/Recipe/Recipe";
+import RecipeCard from "../components/RecipeCard/RecipeCard";
 
 // Axios imports
 import axios from "axios";
@@ -26,13 +26,26 @@ const Home = () => {
     };
   });
 
+  // Supprimer une recette
+  const onDeleteRecipe = async (recipe, id) => {
+    console.log("suppression:", recipe);
+    axios
+      .delete(`http://localhost:9000/api/recipe/${id}`, recipe)
+      .then((response) => {
+        console.log(response.data);
+        // setRecipes(response.data);
+        const newRecipes = recipes.filter((index) => index !== recipe);
+        setRecipes(newRecipes);
+      });
+  };
+
   return (
     <>
       <Row>
         <Col xs={12} className="my-4">
           <h1 className="mb-0 title">Liste des recettes</h1>
         </Col>
-        <Recipe recipes={recipes} />
+        <RecipeCard recipes={recipes} setRecipes={setRecipes} onDeleteRecipe={onDeleteRecipe} />
       </Row>
     </>
   );

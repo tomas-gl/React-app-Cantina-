@@ -156,7 +156,7 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
                     type="number"
                     as="input"
                     name="tempsPreparation"
-                  // value={tempsPreparation}
+                    value={values.tempsPreparation}
                   ></Field>
                   <span type="invalid" className="error-msg">
                     {errors.tempsPreparation}

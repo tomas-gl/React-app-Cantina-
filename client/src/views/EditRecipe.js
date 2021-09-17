@@ -28,6 +28,7 @@ const EditRecipe = () => {
     recipeDetails = recipe;
     console.log(recipeDetails);
   }
+  
   // Modifier une recette
   const onEditRecipe = async (recipe) => {
     console.log("modification:", recipe);
