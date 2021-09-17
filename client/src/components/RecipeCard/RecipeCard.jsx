@@ -5,7 +5,7 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 // Router-dom imports
 import { Link } from "react-router-dom";
 
-const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe }) => {
+const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
   return (
     <>
       {recipes &&
@@ -45,7 +45,7 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe }) => {
                   Modifier
                 </Button>
                 <Button variant="outline-danger" className="mx-2 mb-2"
-                  onClick={() => onDeleteRecipe(recipe, recipe.id)}>
+                  onClick={() => onOpenModal(recipe)}>
                   <FaTrashAlt className="m-1" />
                   Supprimer
                 </Button>
