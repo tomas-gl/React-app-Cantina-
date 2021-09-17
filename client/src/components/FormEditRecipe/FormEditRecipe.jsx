@@ -91,7 +91,7 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
           {({ values, errors }) => (
             <Form className="my-5 p-5">
               <Row className="mb-3">
-              <h1 className="title">Modifier une recette</h1>
+                <h1 className="title">Modifier une recette</h1>
                 <Col md={6} className="my-3">
                   <Field
                     placeholder="Titre"

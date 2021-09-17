@@ -88,7 +88,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
           return errors;
         }}
       >
-        {({ values, errors }) => (
+        {({ values, errors, setFieldValue }) => (
           <Form className="my-5 p-5">
             <Row className="mb-3">
               <h1 className="title">Ajouter une recette</h1>
@@ -156,7 +156,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
                   type="number"
                   as="input"
                   name="tempsPreparation"
-                // value={tempsPreparation}
+                  value={values.tempsPreparation}
                 ></Field>
                 <span type="invalid" className="error-msg">
                   {errors.tempsPreparation}
@@ -192,6 +192,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
                                   type="number"
                                   as="input"
                                   name={`ingredients.${index}.quantite`}
+                                  value={values.ingredients.quantite}
                                 ></Field>
                               </Col>
                               <Col md={3}>
@@ -201,6 +202,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
                                   style={{ appearance: "auto" }}
                                   as="select"
                                   name={`ingredients.${index}.unite`}
+                                  value={values.ingredients.unite}
                                 >
                                   <option value=""></option>
                                   <option value="mg">mg</option>
@@ -217,6 +219,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
                                   className="w-100 my-2 form-control"
                                   type="input"
                                   name={`ingredients.${index}.nom`}
+                                  value={values.ingredients.nom}
                                 ></Field>
                               </Col>
                               <Col md={1} style={{ lineHeight: "3" }}>
@@ -262,6 +265,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
                                   className="w-100 my-2 form-control"
                                   as="textarea"
                                   name={`etapes.${index}.texte`}
+                                  value={values.etapes.texte}
                                 ></Field>
                               </Col>
                               <Col md={1} style={{ lineHeight: "4" }}>

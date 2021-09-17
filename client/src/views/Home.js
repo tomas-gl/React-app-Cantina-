@@ -8,7 +8,7 @@ import RecipeCard from "../components/RecipeCard/RecipeCard";
 import axios from "axios";
 
 // Bootstrap/Icons imports
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Modal, Button } from "react-bootstrap";
 
 const Home = () => {
   const url = "http://localhost:9000/api/recipes";
@@ -37,19 +37,51 @@ const Home = () => {
         const newRecipes = recipes.filter((index) => index !== recipe);
         setRecipes(newRecipes);
       });
+    
   };
+  // function Example() {
+    const [show, setShow] = useState(true);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    // return (
+    //   <>
+    //     <Button variant="primary" onClick={handleShow}>
+    //       Launch demo modal
+    //     </Button>
 
-  return (
-    <>
-      <Row>
-        <Col xs={12} className="my-4">
-          <h1 className="mb-0 title">Liste des recettes</h1>
-        </Col>
-        <RecipeCard recipes={recipes} setRecipes={setRecipes} onDeleteRecipe={onDeleteRecipe} />
-      </Row>
-    </>
-  );
+    //   </>
+    // );
   // }
+  if (recipes) {
+    return (
+      <>
+        <Row>
+          <Col xs={12} className="my-4">
+            <h1 className="mb-0 title">Liste des recettes</h1>
+          </Col>
+          <RecipeCard recipes={recipes} setRecipes={setRecipes} onDeleteRecipe={onDeleteRecipe}/>
+        </Row>
+        
+        <Modal show={show} onHide={handleShow}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+  return <></>
 };
 
 export default Home;

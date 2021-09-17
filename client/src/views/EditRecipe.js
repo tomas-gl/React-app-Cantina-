@@ -8,7 +8,7 @@ import FormEditRecipe from "../components/FormEditRecipe/FormEditRecipe";
 import axios from "axios";
 
 // Router-dom imports
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const EditRecipe = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ const EditRecipe = () => {
     recipeDetails = recipe;
     console.log(recipeDetails);
   }
-  
+  const history = useHistory();
   // Modifier une recette
   const onEditRecipe = async (recipe) => {
     console.log("modification:", recipe);
@@ -37,7 +37,8 @@ const EditRecipe = () => {
       .then((response) => {
         console.log(response.data);
         setRecipes(response.data);
-      });
+      })
+      .then(history.push('/'));
   };
   return (
     <>

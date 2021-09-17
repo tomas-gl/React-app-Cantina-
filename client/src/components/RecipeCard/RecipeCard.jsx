@@ -45,7 +45,7 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe }) => {
                   Modifier
                 </Button>
                 <Button variant="outline-danger" className="mx-2 mb-2"
-                onClick={()=> onDeleteRecipe(recipe, recipe.id)}>
+                  onClick={() => onDeleteRecipe(recipe, recipe.id)}>
                   <FaTrashAlt className="m-1" />
                   Supprimer
                 </Button>
