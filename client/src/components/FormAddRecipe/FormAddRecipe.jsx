@@ -1,5 +1,5 @@
 // Styles import
-import "../FormRecipe/style.css";
+// import "./style.css";
 
 // Bootstrap/Icons imports
 import { Button, Row, Col } from "react-bootstrap";
@@ -39,8 +39,9 @@ const schema = yup.object().shape({
     .min(1, "Veuillez au moins renseigner une étape"),
 });
 
-const FormRecipe = ({ onAddRecipe, recettes, setRecettes }) => {
-  // if (recette) {
+const FormAddRecipe = ({ onAddRecipe }) => {
+
+  // Empty form
   return (
     <div className="container-form">
       <Formik
@@ -90,6 +91,7 @@ const FormRecipe = ({ onAddRecipe, recettes, setRecettes }) => {
         {({ values, errors }) => (
           <Form className="my-5 p-5">
             <Row className="mb-3">
+              <h1 className="title">Ajouter une recette</h1>
               <Col md={6} className="my-3">
                 <Field
                   placeholder="Titre"
@@ -154,7 +156,7 @@ const FormRecipe = ({ onAddRecipe, recettes, setRecettes }) => {
                   type="number"
                   as="input"
                   name="tempsPreparation"
-                  // value={tempsPreparation}
+                // value={tempsPreparation}
                 ></Field>
                 <span type="invalid" className="error-msg">
                   {errors.tempsPreparation}
@@ -299,7 +301,7 @@ const FormRecipe = ({ onAddRecipe, recettes, setRecettes }) => {
         )}
       </Formik>
     </div>
-  );
+  )
 };
 
-export default FormRecipe;
+export default FormAddRecipe;

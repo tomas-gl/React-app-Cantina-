@@ -13,34 +13,34 @@ import { Row, Col } from "react-bootstrap";
 const Recipe = () => {
   const { id } = useParams();
   const url = `http://localhost:9000/api/recipe/${id}`;
-  const [recette, setRecette] = useState(null);
+  const [recipe, setRecipe] = useState(null);
 
-  let recetteDetails = null;
+  let recipeDetails = null;
 
   // Récupération des données
   useEffect(() => {
     axios.get(url).then((response) => {
-      setRecette(response.data);
+      setRecipe(response.data);
     });
   }, [url]);
-  if (recette) {
-    recetteDetails = recette;
-    console.log(recetteDetails);
+  if (recipe) {
+    recipeDetails = recipe;
+    console.log(recipeDetails);
   }
 
-  if (recette) {
+  if (recipe) {
     return (
       <>
         <Row>
           <Col lg={8} xs={12}>
             <div
-              className="recette-header"
+              className="recipe-header"
               style={{
-                backgroundImage: 'url("' + recette.photo + '"',
+                backgroundImage: 'url("' + recipe.photo + '"',
               }}
             ></div>
-            <h2>{recette.titre}</h2>
-            <h3>{recette.description}</h3>
+            <h2>{recipe.titre}</h2>
+            <h3>{recipe.description}</h3>
             <p className="text-start mt-4">
               <span
                 className="d-block"
@@ -48,18 +48,18 @@ const Recipe = () => {
               >
                 Étapes :
               </span>
-              {recette.etapes}
+              {recipe.etapes}
             </p>
           </Col>
           <Col lg={4} xs={12} className="p-4 right-block text-start">
-            <p className="recette-info">Niveau : {recette.niveau}</p>
-            <p className="recette-info">
-              Nombre de personnes : {recette.personnes}
+            <p className="recipe-info">Niveau : {recipe.niveau}</p>
+            <p className="recipe-info">
+              Nombre de personnes : {recipe.personnes}
             </p>
-            <p className="recette-info">
-              Temps de préparation: {recette.tempsPreparation} minutes
+            <p className="recipe-info">
+              Temps de préparation: {recipe.tempsPreparation} minutes
             </p>
-            <p className="recette-info">Ingrédients: {recette.ingredients}</p>
+            <p className="recipe-info">Ingrédients: {recipe.ingredients}</p>
           </Col>
         </Row>
       </>

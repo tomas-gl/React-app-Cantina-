@@ -12,14 +12,14 @@ import { Row, Col } from "react-bootstrap";
 
 const Home = () => {
   const url = "http://localhost:9000/api/recipes";
-  const [recettes, setRecettes] = useState(null);
-  // let recetteDetails;
+  const [recipes, setRecipes] = useState(null);
+  // let recipeDetails;
 
   // Récupération des données
   useEffect(() => {
     let isMounted = true;
     axios.get(url).then((response) => {
-      if (isMounted) setRecettes(response.data);
+      if (isMounted) setRecipes(response.data);
     });
     return () => {
       isMounted = false;
@@ -30,9 +30,9 @@ const Home = () => {
     <>
       <Row>
         <Col xs={12} className="my-4">
-          <h1 className="mb-0" style={{ color: "#ffffff" }}>Liste des recettes</h1>
+          <h1 className="mb-0 title">Liste des recettes</h1>
         </Col>
-        <Recipe recettes={recettes} />
+        <Recipe recipes={recipes} />
       </Row>
     </>
   );

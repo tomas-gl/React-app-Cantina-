@@ -1,3 +1,5 @@
+/***** Général *****/
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -27,6 +29,12 @@ code {
   width: 100%;
   height: 100%;
 }
+
+.title{
+  color: #ffffff;
+}
+
+/***** Navigation *****/
 
 .nav-cantina {
   background: #f1d9bb;
@@ -60,7 +68,9 @@ code {
   color: #f5f5f5 !important;
 }
 
-.recette-link {
+/***** Carte recette *****/
+
+.recipe-link {
   text-decoration: none !important;
   color: #000000 !important;
   transition: 0.5s;
@@ -77,7 +87,7 @@ code {
   overflow: hidden;
 }
 
-.recette-header {
+.recipe-header {
   height: 350px;
   width: 100%;
   background-size: cover;
@@ -94,7 +104,23 @@ code {
   padding: 1.25rem;
 }
 
-.recette-info {
+.recipe-info {
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+/***** Formulaire *****/
+
+.container-form{
+  max-width: 800px;
+  margin: auto;
+}
+
+form{
+  background-color: #212529cc;
+  border-radius: 25px;
+}
+
+.error-msg{
+  color: red;
 }

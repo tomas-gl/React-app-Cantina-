@@ -5,32 +5,32 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 // Router-dom imports
 import { Link } from "react-router-dom";
 
-const Recipe = ({ recettes }) => {
+const Recipe = ({ recipes }) => {
   return (
     <>
-      {recettes &&
-        recettes.map((recette, index) => (
+      {recipes &&
+        recipes.map((recipe, index) => (
           <Col key={index} xl={3} lg={4} md={6} xs={12} className="mt-3">
             <Card className="card-cantina my-3">
               <Link
                 to={{
-                  pathname: `/recipe/${recette.id}`,
+                  pathname: `/recipe/${recipe.id}`,
                 }}
-                className="recette-link"
+                className="recipe-link"
               >
                 <div className="img-container">
-                  <Card.Img variant="top" src={recette.photo} />
+                  <Card.Img variant="top" src={recipe.photo} />
                 </div>
                 <Card.Body className="px-2">
-                  <Card.Title>{recette.titre}</Card.Title>
+                  <Card.Title>{recipe.titre}</Card.Title>
                   <Card.Text className="m-0">
-                    Niveau de difficulté: {recette.niveau}
+                    Niveau de difficulté: {recipe.niveau}
                   </Card.Text>
                   <Card.Text className="m-0">
-                    Nombre de personnes: {recette.personnes}
+                    Nombre de personnes: {recipe.personnes}
                   </Card.Text>
                   <Card.Text className="mb-3">
-                    Temps de préparation: {recette.tempsPreparation} minutes
+                    Temps de préparation: {recipe.tempsPreparation} minutes
                   </Card.Text>
                 </Card.Body>
               </Link>
@@ -39,7 +39,7 @@ const Recipe = ({ recettes }) => {
                   variant="outline-primary"
                   className="mx-2 mb-2"
                   as={Link}
-                  to={`/recipe/${recette.id}/edit`}
+                  to={`/recipe/${recipe.id}/edit`}
                 >
                   <FaPencilAlt className="m-1" />
                   Modifier

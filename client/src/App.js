@@ -18,13 +18,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Container } from "react-bootstrap";
 
 function App() {
-  // const [recettes, setRecettes] = useState(null);
+  // const [recipes, setRecipes] = useState(null);
 
   // useEffect(() => {
   //   fetch("http://localhost:9000/api/recipes")
   //     .then((res) => res.json())
   //     .then((recipes) => {
-  //       setRecettes(recipes);
+  //       setRecipes(recipes);
   //     });
   // }, []);
 

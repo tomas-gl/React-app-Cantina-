@@ -5,37 +5,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Components imports
-import FormRecipe from "../components/FormRecipe/FormRecipe";
+import FormAddRecipe from "../components/FormAddRecipe/FormAddRecipe";
 
 const AddRecipe = () => {
-  const url = "http://localhost:9000/api/recipes";
-  const [recettes, setRecettes] = useState(null);
-  // let recetteDetails;
-
-  // Récupération des données
-  useEffect(() => {
-    let isMounted = true;
-    axios.get(url).then((response) => {
-      if (isMounted) setRecettes(response.data);
-    });
-  });
+  const [recipes, setRecipes] = useState(null);
 
   // Ajouter une recette
-  const onAddRecipe = async (recette) => {
-    console.log("submit:", recette);
+  const onAddRecipe = async (recipe) => {
+    console.log("ajout:", recipe);
     axios
-      .post("http://localhost:9000/api/recipes", recette)
+      .post("http://localhost:9000/api/recipes", recipe)
       .then((response) => {
-        console.log(response);
-        setRecettes(response.data);
+        console.log(response.data);
+        setRecipes(response.data);
       });
   };
   return (
     <>
-      <FormRecipe
+      <FormAddRecipe
         onAddRecipe={onAddRecipe}
-        recettes={recettes}
-        setRecettes={setRecettes}
       />
     </>
   );
