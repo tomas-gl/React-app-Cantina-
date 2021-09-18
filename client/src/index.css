@@ -33,6 +33,19 @@ code {
   color: #ffffff;
 }
 
+.title-filtre {
+  line-height: 2;
+  color: #ffffff;
+  text-align: start;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.filtre {
+  background-color: #212529cc;
+  border-radius: 25px;
+}
+
 /***** Navigation *****/
 
 .nav-cantina {
@@ -138,11 +151,11 @@ code {
   font-size: 1.25rem;
 }
 
-.recipe-info span{
+.recipe-info span {
   font-weight: bold;
 }
 
-.recipe-icon{
+.recipe-icon {
   vertical-align: bottom;
 }
 

@@ -9,6 +9,23 @@ import { Link } from "react-router-dom";
 import defaultImg from "../../images/plate.jpg";
 
 const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
+  let hours;
+  let minutes;
+
+  recipes.forEach((element) => {
+    if (element.tempsPreparation >= 60) {
+      let time = element.tempsPreparation;
+      hours = Math.floor(time / 60);
+      if (hours >= 2) {
+        hours = hours + " heures";
+      } else {
+        hours = hours + " heure";
+      }
+      minutes = (time % 60) + " minutes";
+      element.hours = hours;
+      element.minutes = minutes;
+    }
+  });
   return (
     <>
       {recipes &&
@@ -31,13 +48,22 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
                 <Card.Body className="px-2">
                   <Card.Title>{recipe.titre}</Card.Title>
                   <Card.Text className="m-0">
-                    Niveau de difficulté: {recipe.niveau}
+                    Niveau de difficulté : {recipe.niveau}
                   </Card.Text>
                   <Card.Text className="m-0">
-                    Nombre de personnes: {recipe.personnes}
+                    Nombre de personne{recipe.personnes > 1 && <>s</>} :{" "}
+                    <span>{recipe.personnes}</span>
                   </Card.Text>
                   <Card.Text className="mb-3">
-                    Temps de préparation: {recipe.tempsPreparation} minutes
+                    Temps de préparation :{" "}
+                    {recipe.tempsPreparation >= 60 && (
+                      <span>
+                        {recipe.hours} et {recipe.minutes}
+                      </span>
+                    )}
+                    {recipe.tempsPreparation <= 59 && (
+                      <span>{recipe.tempsPreparation} minutes</span>
+                    )}
                   </Card.Text>
                   <Card.Text className="hover-text">
                     Consulter la recette

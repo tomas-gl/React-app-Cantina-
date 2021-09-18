@@ -12,7 +12,7 @@ import SuccessAlert from "../components/Modals/SuccessAlert";
 import axios from "axios";
 
 // Bootstrap/Icons imports
-import { Row, Col, Modal, Button } from "react-bootstrap";
+import { Row, Col, Modal, Button, Form } from "react-bootstrap";
 
 const Home = () => {
   const url = "http://localhost:9000/api/recipes";
@@ -77,8 +77,33 @@ const Home = () => {
     return (
       <>
         <Row>
-          <Col xs={12} className="my-4">
-            <h1 className="mb-0 title">Liste des recettes</h1>
+          <Col md={4} xs={12} className="my-4">
+            <h1 className="mb-0 title text-start">Liste des recettes</h1>
+          </Col>
+          <Col md={8} xs={12} className="my-4">
+            <span className="d-block title-filtre">Filtrer par :</span>
+            <Row className="filtre p-3 mx-auto">
+              <Form.Group as={Col} md="3" className="mb-3">
+                <Form.Label className="title">Titre</Form.Label>
+                <Form.Control type="text" />
+              </Form.Group>
+              <Form.Group as={Col} md="3" className="mb-3">
+                <Form.Label className="title">Niveau de difficulté</Form.Label>
+                <Form.Select>
+                  <option value="padawan">Padawan</option>
+                  <option value="jedi">Jedi</option>
+                  <option value="maitre">Maître</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group as={Col} md="3" className="mb-3">
+                <Form.Label className="title">Nombre de personnes</Form.Label>
+                <Form.Control type="number" />
+              </Form.Group>
+              <Form.Group as={Col} md="3" className="mb-3">
+                <Form.Label className="title">Temps de préparation</Form.Label>
+                <Form.Control type="number" />
+              </Form.Group>
+            </Row>
           </Col>
           <RecipeCard
             recipes={recipes}

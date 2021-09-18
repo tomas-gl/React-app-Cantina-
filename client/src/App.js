@@ -35,20 +35,20 @@ function App() {
         <Container>
           {/* Home */}
           <Switch>
-            <Route path="/" component={Home} exact>
+            <Route path="/" comp={Home} exact>
               <Home></Home>
             </Route>
             {/* Add Recipe */}
-            <Route path="/add" component={AddRecipe} exact>
+            <Route path="/add" comp={AddRecipe} exact>
               <AddRecipe></AddRecipe>
             </Route>
             {/* Edit Recipe */}
-            <Route path="/recipe/:id/edit/" component={EditRecipe} exact>
+            <Route path="/recipe/:id/edit/" comp={EditRecipe} exact>
               <EditRecipe></EditRecipe>
             </Route>
 
             {/* Recipe */}
-            <Route path="/recipe/:id" component={Recipe} exact>
+            <Route path="/recipe/:id" comp={Recipe} exact>
               <Recipe></Recipe>
             </Route>
 

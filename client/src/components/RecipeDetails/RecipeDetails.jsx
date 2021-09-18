@@ -16,6 +16,18 @@ import { AiOutlinePushpin } from "react-icons/ai";
 import defaultImg from "../../images/plate.jpg";
 
 const RecipeDetails = ({ recipe, onOpenModal }) => {
+  let hours;
+  let minutes;
+  if (recipe.tempsPreparation >= 60) {
+    let time = recipe.tempsPreparation;
+    hours = Math.floor(time / 60);
+    if (hours >= 2) {
+      hours = hours + " heures";
+    } else {
+      hours = hours + " heure";
+    }
+    minutes = (time % 60) + " minutes";
+  }
   if (recipe) {
     return (
       <Row className="recipe my-5 px-sm-5 px-2 py-sm-5 py-3 mx-auto row row">
@@ -67,14 +79,23 @@ const RecipeDetails = ({ recipe, onOpenModal }) => {
               className="mx-1 recipe-icon"
               style={{ fontSize: "2rem" }}
             />
-            Nombre de personnes : <span>{recipe.personnes}</span>
+            Nombre de personne{recipe.personnes > 1 && <>s</>} :{" "}
+            <span>{recipe.personnes}</span>
           </p>
           <p className="recipe-info">
             <GiCookingPot
               className="mx-1 recipe-icon"
               style={{ fontSize: "2rem" }}
             />
-            Temps de préparation: <span>{recipe.tempsPreparation} minutes</span>
+            Temps de préparation :{" "}
+            {recipe.tempsPreparation >= 60 && (
+              <span>
+                {hours} et {minutes}
+              </span>
+            )}
+            {recipe.tempsPreparation <= 59 && (
+              <span>{recipe.tempsPreparation} minutes</span>
+            )}
           </p>
 
           <div className="recipe-info mb-3">
