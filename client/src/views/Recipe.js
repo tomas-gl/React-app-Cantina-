@@ -4,8 +4,12 @@ import { useState, useEffect } from "react";
 // Axios imports
 import axios from "axios";
 
+// Components imports
+import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
+import ConfirmationModal from "../components/Modals/ConfirmationModal";
+
 // Router-dom imports
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 // Bootstrap/Icons imports
 import { Row, Col } from "react-bootstrap";
@@ -14,6 +18,12 @@ const Recipe = () => {
   const { id } = useParams();
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recipe, setRecipe] = useState(null);
+  // // const [recipes, setRecipes] = useState(null);
+  const [showModal, setShowModal] = useState(null);
+  const [showAlert, setShowAlert] = useState(null);
+  const [oneRecipe, setOneRecipe] = useState(null);
+  const [successType, setSuccessType] = useState(null);
+  const history = useHistory();
 
   let recipeDetails = null;
 
@@ -28,40 +38,46 @@ const Recipe = () => {
     console.log(recipeDetails);
   }
 
+  // Supprimer une recette
+  const onDeleteRecipe = async (recipe) => {
+    // console.log(recipe, recipe.id);
+    console.log("suppression:", recipe);
+    axios
+      .delete(`http://localhost:9000/api/recipe/${recipe.id}`, recipe)
+      .then((response) => {
+        console.log(response.data);
+        // setRecipes(response.data);
+        // const newRecipes = recipes.filter((index) => index !== recipe);
+        // setRecipes(newRecipes);
+        setShowModal(false);
+        setShowAlert(true);
+        setSuccessType("supression");
+      })
+      .then(
+        history.push({
+          pathname: "/",
+          state: { successType: "creation", showAlert: true },
+        })
+      );
+  };
+
+  // Ouverture de la modal
+  function onOpenModal(recipe) {
+    setShowModal(true);
+    setOneRecipe(recipe);
+    console.log(recipe);
+  }
+
   if (recipe) {
     return (
       <>
-        <Row>
-          <Col lg={8} xs={12}>
-            <div
-              className="recipe-header"
-              style={{
-                backgroundImage: 'url("' + recipe.photo + '"',
-              }}
-            ></div>
-            <h2>{recipe.titre}</h2>
-            <h3>{recipe.description}</h3>
-            <p className="text-start mt-4">
-              <span
-                className="d-block"
-                style={{ fontSize: "1.25rem", fontWeight: "bold" }}
-              >
-                Étapes :
-              </span>
-              {recipe.etapes}
-            </p>
-          </Col>
-          <Col lg={4} xs={12} className="p-4 right-block text-start">
-            <p className="recipe-info">Niveau : {recipe.niveau}</p>
-            <p className="recipe-info">
-              Nombre de personnes : {recipe.personnes}
-            </p>
-            <p className="recipe-info">
-              Temps de préparation: {recipe.tempsPreparation} minutes
-            </p>
-            <p className="recipe-info">Ingrédients: {recipe.ingredients}</p>
-          </Col>
-        </Row>
+        <RecipeDetails recipe={recipe} onOpenModal={onOpenModal} />
+        <ConfirmationModal
+          onDeleteRecipe={onDeleteRecipe}
+          oneRecipe={oneRecipe}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       </>
     );
   }
