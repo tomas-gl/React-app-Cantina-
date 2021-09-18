@@ -5,6 +5,9 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 // Router-dom imports
 import { Link } from "react-router-dom";
 
+// Images import
+import defaultImg from "../../images/plate.jpg";
+
 const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
   return (
     <>
@@ -19,7 +22,11 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
                 className="recipe-link"
               >
                 <div className="img-container">
-                  <Card.Img variant="top" src={recipe.photo} />
+                  {recipe.photo ? (
+                    <Card.Img variant="top" src={recipe.photo} />
+                  ) : (
+                    <Card.Img variant="top" src={defaultImg} />
+                  )}
                 </div>
                 <Card.Body className="px-2">
                   <Card.Title>{recipe.titre}</Card.Title>
@@ -47,8 +54,11 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
                   <FaPencilAlt className="m-1" />
                   Modifier
                 </Button>
-                <Button variant="outline-danger" className="mx-2 mb-2"
-                  onClick={() => onOpenModal(recipe)}>
+                <Button
+                  variant="outline-danger"
+                  className="mx-2 mb-2"
+                  onClick={() => onOpenModal(recipe)}
+                >
                   <FaTrashAlt className="m-1" />
                   Supprimer
                 </Button>
