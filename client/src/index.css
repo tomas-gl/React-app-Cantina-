@@ -22,10 +22,11 @@ code {
 
 .App {
   background: url("images/wood-background.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 .title {
@@ -76,6 +77,16 @@ code {
 
 .card-cantina {
   box-shadow: 0px 0px 10px 0px #000000;
+  position: relative;
+  /* transition: 2s ease-in-out; */
+}
+
+.card-cantina:hover .img-container {
+  filter: brightness(0.5);
+}
+
+.card-cantina:hover .hover-text {
+  opacity: 1;
 }
 
 .img-container {
@@ -83,9 +94,38 @@ code {
   background-position: 50%;
   height: 275px;
   overflow: hidden;
+  transition: 0.5s ease;
+}
+
+.hover-text {
+  position: absolute;
+  font-size: 1.25rem;
+  top: 25%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: #ffffff;
+  transition: 0.5s ease;
+}
+
+/***** Détails recette *****/
+
+.titre {
+  font-size: 2rem;
+}
+
+.description {
+  font-size: 1.5rem;
+}
+
+.recipe {
+  background-color: #212529cc;
+  border-radius: 25px;
+  color: #ffffff;
 }
 
 .recipe-header {
+  border-radius: 10px;
   height: 350px;
   width: 100%;
   background-size: cover;
@@ -126,15 +166,19 @@ form {
 /***** Modal *****/
 
 @keyframes fadein {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-.toast{
+.toast {
   animation: fadein 1s ease-in alternate infinite;
   animation-delay: 2s;
 }
 
-.toast-body{
+.toast-body {
   color: #ffffff;
 }

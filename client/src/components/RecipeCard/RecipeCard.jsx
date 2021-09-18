@@ -32,6 +32,9 @@ const RecipeCard = ({ recipes, setRecipes, onDeleteRecipe, onOpenModal }) => {
                   <Card.Text className="mb-3">
                     Temps de préparation: {recipe.tempsPreparation} minutes
                   </Card.Text>
+                  <Card.Text className="hover-text">
+                    Consulter la recette
+                  </Card.Text>
                 </Card.Body>
               </Link>
               <Card.Body className="pt-0 px-0">
