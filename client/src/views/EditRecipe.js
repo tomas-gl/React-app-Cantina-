@@ -15,6 +15,9 @@ const EditRecipe = () => {
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recipe, setRecipe] = useState(null);
   const [recipes, setRecipes] = useState(null);
+  const [successType, setSuccessType] = useState(null);
+  const [showAlert, setShowAlert] = useState(null);
+  const history = useHistory();
 
   let recipeDetails = null;
 
@@ -28,7 +31,7 @@ const EditRecipe = () => {
     recipeDetails = recipe;
     console.log(recipeDetails);
   }
-  const history = useHistory();
+
   // Modifier une recette
   const onEditRecipe = async (recipe) => {
     console.log("modification:", recipe);
@@ -37,12 +40,18 @@ const EditRecipe = () => {
       .then((response) => {
         console.log(response.data);
         setRecipes(response.data);
+        setShowAlert(true);
+        setSuccessType("creation");
       })
-      .then(history.push('/'));
+      .then(history.push("/"));
   };
   return (
     <>
-      <FormEditRecipe recipe={recipe} setRecipe={setRecipe} onEditRecipe={onEditRecipe}/>
+      <FormEditRecipe
+        recipe={recipe}
+        setRecipe={setRecipe}
+        onEditRecipe={onEditRecipe}
+      />
     </>
   );
 };

@@ -4,24 +4,34 @@ import { useState } from "react";
 // Bootstrap/Icons imports
 import { Row, Col, Modal, Button } from "react-bootstrap";
 
-const ConfirmationModal = ({ onDeleteRecipe, oneRecipe, show, setShow }) => {
+const ConfirmationModal = ({
+  onDeleteRecipe,
+  oneRecipe,
+  showModal,
+  setShowModal,
+}) => {
   //   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShowModal(false);
+  // const handleShow = () => setShowModal(true);
   return (
-    <Modal show={show} onHide={handleShow}>
-      <Modal.Header closeButton onClick={handleClose}>
+    <Modal show={showModal} onHide={() => setShowModal(true)}>
+      <Modal.Header closeButton onClick={() => setShowModal(false)}>
         <Modal.Title>Confirmation suppression</Modal.Title>
       </Modal.Header>
       <Modal.Body>Êtes-vous sûr de vouloir supprimer cette recette?</Modal.Body>
       <Modal.Footer className="mx-auto">
-        <Button variant="secondary" onClick={handleClose}>
+        <Button
+          className="mx-3"
+          variant="secondary"
+          onClick={() => setShowModal(false)}
+        >
           Fermer
         </Button>
         <Button
+          className="mx-3"
           variant="danger"
-          onClick={handleClose}
+          onClick={() => setShowModal(false)}
           onClick={() => onDeleteRecipe(oneRecipe)}
         >
           Valider
