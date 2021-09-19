@@ -298,9 +298,6 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
                 </Col>
               </Row>
               <Button type="submit">Submit form</Button>
-              <pre style={{ color: "white" }}>
-                {JSON.stringify(values, null, 2)}
-              </pre>{" "}
             </Form>
           )}
         </Formik>
