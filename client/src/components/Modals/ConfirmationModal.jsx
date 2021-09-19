@@ -26,8 +26,10 @@ const ConfirmationModal = ({
         <Button
           className="mx-3"
           variant="danger"
-          onClick={() => setShowModal(false)}
-          onClick={() => onDeleteRecipe(oneRecipe)}
+          onClick={() => {
+            setShowModal(false);
+            onDeleteRecipe(oneRecipe);
+          }}
         >
           Valider
         </Button>

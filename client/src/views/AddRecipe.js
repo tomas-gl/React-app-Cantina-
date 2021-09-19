@@ -11,6 +11,9 @@ import FormAddRecipe from "../components/FormAddRecipe/FormAddRecipe";
 import { useHistory } from "react-router-dom";
 
 const AddRecipe = () => {
+  const [recipes, setRecipes] = useState(null);
+  const [successType, setSuccessType] = useState(null);
+  const [showAlert, setShowAlert] = useState(null);
   const history = useHistory();
 
   // Ajouter une recette

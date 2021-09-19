@@ -68,7 +68,7 @@ const Home = () => {
   // Filtrer des recettes
   const filter = (e) => {
     const keyword = e.target.value;
-    if (e.target.id == "searchTitre") {
+    if (e.target.id === "searchTitre") {
       setFoundLevel("");
       setFoundPersonnes("");
       setFoundTempsPreparation("");
@@ -81,7 +81,7 @@ const Home = () => {
         setFoundTitles(recipes);
       }
       setTitle(keyword);
-    } else if (e.target.id == "searchNiveau") {
+    } else if (e.target.id === "searchNiveau") {
       setFoundTitles("");
       setFoundPersonnes("");
       setFoundTempsPreparation("");
@@ -90,11 +90,11 @@ const Home = () => {
           return recipe.niveau.toLowerCase().startsWith(keyword.toLowerCase());
         });
         setFoundLevel(results);
-      } else if (keyword == "all") {
+      } else if (keyword === "all") {
         setFoundLevel(recipes);
       }
       setLevel(keyword);
-    } else if (e.target.id == "searchPersonnes") {
+    } else if (e.target.id === "searchPersonnes") {
       setFoundTitles("");
       setFoundLevel("");
       setFoundTempsPreparation("");
@@ -107,7 +107,7 @@ const Home = () => {
         setFoundPersonnes(recipes);
       }
       setPersonnes(keyword);
-    } else if (e.target.id == "searchTemps") {
+    } else if (e.target.id === "searchTemps") {
       setFoundTitles("");
       setFoundLevel("");
       setFoundPersonnes("");

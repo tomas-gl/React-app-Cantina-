@@ -25,10 +25,10 @@ const SuccessAlert = ({ successType, showAlert, setShowAlert }) => {
             />
             <strong className="me-auto">Success</strong>
           </Toast.Header>
-          {successType == "supression" && (
+          {successType === "supression" && (
             <Toast.Body>Suppression effectuée avec succès !</Toast.Body>
           )}
-          {successType == "creation" && (
+          {successType === "creation" && (
             <Toast.Body>Creation effectuée avec succès !</Toast.Body>
           )}
         </Toast>

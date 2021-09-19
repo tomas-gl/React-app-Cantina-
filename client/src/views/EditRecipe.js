@@ -14,6 +14,9 @@ const EditRecipe = () => {
   const { id } = useParams();
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recipe, setRecipe] = useState(null);
+  const [recipes, setRecipes] = useState(null);
+  const [successType, setSuccessType] = useState(null);
+  const [showAlert, setShowAlert] = useState(null);
   const history = useHistory();
 
   let recipeDetails = null;

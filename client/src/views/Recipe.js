@@ -16,9 +16,9 @@ const Recipe = () => {
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recipe, setRecipe] = useState(null);
   const [showModal, setShowModal] = useState(null);
-  const [showAlert, setShowAlert] = useState(null);
+  const [setShowAlert] = useState(null);
   const [oneRecipe, setOneRecipe] = useState(null);
-  const [successType, setSuccessType] = useState(null);
+  const [setSuccessType] = useState(null);
   const history = useHistory();
 
   let recipeDetails = null;
