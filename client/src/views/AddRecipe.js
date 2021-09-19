@@ -8,9 +8,6 @@ import axios from "axios";
 import FormAddRecipe from "../components/FormAddRecipe/FormAddRecipe";
 import SuccessAlert from "../components/Modals/SuccessAlert";
 
-// Contexts imports
-import SuccessTypeContext from "../Contexts/SuccessTypeContext";
-
 // Router-dom imports
 import { useHistory } from "react-router-dom";
 

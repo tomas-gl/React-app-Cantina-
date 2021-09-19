@@ -19,7 +19,9 @@ const ConfirmationModal = ({
       <Modal.Header closeButton onClick={() => setShowModal(false)}>
         <Modal.Title>Confirmation suppression</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Êtes-vous sûr de vouloir supprimer cette recette ?</Modal.Body>
+      <Modal.Body>
+        Êtes-vous sûr de vouloir supprimer cette recette ?
+      </Modal.Body>
       <Modal.Footer className="mx-auto">
         <Button
           className="mx-3"

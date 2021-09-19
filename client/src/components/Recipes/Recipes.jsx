@@ -115,7 +115,6 @@ const Recipes = ({
   if (recipes) {
     return (
       <>
-        <div style={{ color: "white" }}>Ta mère la pute recipes</div>
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} onOpenModal={onOpenModal} />
         ))}

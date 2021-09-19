@@ -5,11 +5,15 @@ import { useState } from "react";
 import { Row, Col, Modal, Button, Toast } from "react-bootstrap";
 
 const SuccessAlert = ({ successType, showAlert, setShowAlert }) => {
-//   const [show, setShow] = useState(true);
+  //   const [show, setShow] = useState(true);
 
   //   if(successType == "supression"){
   return (
-    <Row show={showAlert} className="w-100" style={{ position: "fixed", bottom: "1%" }}>
+    <Row
+      show={showAlert}
+      className="w-100"
+      style={{ position: "fixed", bottom: "1%" }}
+    >
       <Col xs={10} sm={12}>
         <Toast
           className="toast"
