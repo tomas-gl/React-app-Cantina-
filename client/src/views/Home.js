@@ -31,13 +31,18 @@ const Home = () => {
   // Récupération des données
   useEffect(() => {
     let isMounted = true;
-    axios.get(url).then((response) => {
-      if (isMounted) setRecipes(response.data);
-    });
+    axios
+      .get(url)
+      .then((response) => {
+        if (isMounted) setRecipes(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     return () => {
       isMounted = false;
     };
-  });
+  }, []);
 
   // Supprimer une recette
   const onDeleteRecipe = async (recipe) => {
