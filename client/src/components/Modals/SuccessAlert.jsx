@@ -1,13 +1,7 @@
-// React imports
-import { useState } from "react";
-
-// Bootstrap/Icons imports
-import { Row, Col, Modal, Button, Toast } from "react-bootstrap";
+// Bootstrap imports
+import { Row, Col, Toast } from "react-bootstrap";
 
 const SuccessAlert = ({ successType, showAlert, setShowAlert }) => {
-  //   const [show, setShow] = useState(true);
-
-  //   if(successType == "supression"){
   return (
     <Row
       show={showAlert}
@@ -41,8 +35,6 @@ const SuccessAlert = ({ successType, showAlert, setShowAlert }) => {
       </Col>
     </Row>
   );
-
-  //   return <></>
 };
 
 export default SuccessAlert;

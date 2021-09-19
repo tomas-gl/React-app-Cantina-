@@ -1,5 +1,5 @@
 // Bootstrap/Icons imports
-import { Row, Card, Button, Col } from "react-bootstrap";
+import { Row, Button, Col } from "react-bootstrap";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 
 // Router-dom imports
@@ -16,6 +16,7 @@ import { AiOutlinePushpin } from "react-icons/ai";
 import defaultImg from "../../images/plate.jpg";
 
 const RecipeDetails = ({ recipe, onOpenModal }) => {
+  // Convertir le temps en h/m
   let hours;
   let minutes;
   if (recipe.tempsPreparation >= 60) {
@@ -28,6 +29,7 @@ const RecipeDetails = ({ recipe, onOpenModal }) => {
     }
     minutes = (time % 60) + " minutes";
   }
+
   if (recipe) {
     return (
       <Row className="recipe my-5 px-sm-5 px-2 py-sm-5 py-3 mx-auto row row">

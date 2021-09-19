@@ -11,14 +11,10 @@ import ConfirmationModal from "../components/Modals/ConfirmationModal";
 // Router-dom imports
 import { useParams, useHistory } from "react-router-dom";
 
-// Bootstrap/Icons imports
-import { Row, Col } from "react-bootstrap";
-
 const Recipe = () => {
   const { id } = useParams();
   const url = `http://localhost:9000/api/recipe/${id}`;
   const [recipe, setRecipe] = useState(null);
-  // // const [recipes, setRecipes] = useState(null);
   const [showModal, setShowModal] = useState(null);
   const [showAlert, setShowAlert] = useState(null);
   const [oneRecipe, setOneRecipe] = useState(null);
@@ -40,15 +36,11 @@ const Recipe = () => {
 
   // Supprimer une recette
   const onDeleteRecipe = async (recipe) => {
-    // console.log(recipe, recipe.id);
     console.log("suppression:", recipe);
     axios
       .delete(`http://localhost:9000/api/recipe/${recipe.id}`, recipe)
       .then((response) => {
         console.log(response.data);
-        // setRecipes(response.data);
-        // const newRecipes = recipes.filter((index) => index !== recipe);
-        // setRecipes(newRecipes);
         setShowModal(false);
         setShowAlert(true);
         setSuccessType("supression");

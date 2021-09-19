@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 // Images import
 import defaultImg from "../../images/plate.jpg";
 
-const RecipeCard = (props, index, onOpenModal) => {
-  // console.log(recipe)
+const RecipeCard = (props, index) => {
   return (
     <>
       <Col

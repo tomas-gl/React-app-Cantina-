@@ -1,8 +1,6 @@
 // React imports
 import { useState, useEffect } from "react";
 
-import { useLocation } from "react-router-dom";
-
 // Components imports
 import Recipes from "../components/Recipes/Recipes";
 import ConfirmationModal from "../components/Modals/ConfirmationModal";
@@ -12,7 +10,7 @@ import SuccessAlert from "../components/Modals/SuccessAlert";
 import axios from "axios";
 
 // Bootstrap/Icons imports
-import { Row, Col, Modal, Button, Form } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 
 const Home = () => {
   const url = "http://localhost:9000/api/recipes";
@@ -29,9 +27,6 @@ const Home = () => {
   const [showAlert, setShowAlert] = useState(null);
   const [oneRecipe, setOneRecipe] = useState(null);
   const [successType, setSuccessType] = useState(null);
-  // const { state } = location;
-  // let recipeDetails;
-  // let oneRecipe = null;
 
   // Récupération des données
   useEffect(() => {
@@ -46,13 +41,11 @@ const Home = () => {
 
   // Supprimer une recette
   const onDeleteRecipe = async (recipe) => {
-    // console.log(recipe, recipe.id);
     console.log("suppression:", recipe);
     axios
       .delete(`http://localhost:9000/api/recipe/${recipe.id}`, recipe)
       .then((response) => {
         console.log(response.data);
-        // setRecipes(response.data);
         const newRecipes = recipes.filter((index) => index !== recipe);
         setFoundTitles("");
         setFoundLevel("");
@@ -72,6 +65,7 @@ const Home = () => {
     console.log(recipe);
   }
 
+  // Filtrer des recettes
   const filter = (e) => {
     const keyword = e.target.value;
     if (e.target.id == "searchTitre") {

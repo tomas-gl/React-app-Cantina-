@@ -1,6 +1,3 @@
-// Styles import
-// import "../FormAddRecipe/style.css";
-
 // Bootstrap/Icons imports
 import { Button, Row, Col } from "react-bootstrap";
 import { ImCross } from "react-icons/im";
@@ -9,6 +6,7 @@ import { BsPlusCircleFill } from "react-icons/bs";
 // Formik imports
 import { Formik, Form, Field, FieldArray } from "formik";
 
+// yup imports
 import * as yup from "yup";
 
 const schema = yup.object().shape({

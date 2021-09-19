@@ -18,23 +18,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Container } from "react-bootstrap";
 
 function App() {
-  // const [recipes, setRecipes] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:9000/api/recipes")
-  //     .then((res) => res.json())
-  //     .then((recipes) => {
-  //       setRecipes(recipes);
-  //     });
-  // }, []);
-
   return (
+    // React router
     <BrowserRouter>
       <div className="App pb-5">
         <Header />
         <Container>
-          {/* Home */}
           <Switch>
+            {/* Home */}
             <Route path="/" comp={Home} exact>
               <Home></Home>
             </Route>

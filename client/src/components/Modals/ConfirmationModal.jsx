@@ -1,8 +1,5 @@
-// React imports
-import { useState } from "react";
-
-// Bootstrap/Icons imports
-import { Row, Col, Modal, Button } from "react-bootstrap";
+// Bootstrap imports
+import { Modal, Button } from "react-bootstrap";
 
 const ConfirmationModal = ({
   onDeleteRecipe,
@@ -10,10 +7,6 @@ const ConfirmationModal = ({
   showModal,
   setShowModal,
 }) => {
-  //   const [show, setShow] = useState(false);
-
-  // const handleClose = () => setShowModal(false);
-  // const handleShow = () => setShowModal(true);
   return (
     <Modal show={showModal} onHide={() => setShowModal(true)}>
       <Modal.Header closeButton onClick={() => setShowModal(false)}>

@@ -1,32 +1,18 @@
-// Bootstrap/Icons imports
-import { Card, Button, Col } from "react-bootstrap";
-import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-
-// Router-dom imports
-import { Link } from "react-router-dom";
-
-// Images import
-import defaultImg from "../../images/plate.jpg";
-
 // Components imports
 import RecipeCard from "../Recipes/RecipeCard";
 
 const Recipes = ({
   recipes,
-  setRecipes,
   foundTitles,
-  setFoundTitles,
   foundLevel,
-  setFoundLevel,
   foundPersonnes,
-  setFoundPersonnes,
   foundTempsPreparation,
-  setFoundTempsPreparation,
   onOpenModal,
 }) => {
   let hours;
   let minutes;
 
+  // Convertir le temps en h/m
   function convertTime(e) {
     e.forEach((element) => {
       if (element.tempsPreparation >= 60) {
@@ -50,6 +36,10 @@ const Recipes = ({
     convertTime(foundTitles);
   } else if (foundLevel) {
     convertTime(foundLevel);
+  } else if (foundPersonnes) {
+    convertTime(foundPersonnes);
+  } else if (foundTempsPreparation) {
+    convertTime(foundTempsPreparation);
   }
 
   if (foundTitles) {
