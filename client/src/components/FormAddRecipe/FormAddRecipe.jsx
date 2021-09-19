@@ -40,7 +40,6 @@ const schema = yup.object().shape({
 });
 
 const FormAddRecipe = ({ onAddRecipe }) => {
-
   // Empty form
   return (
     <div className="container-form">
@@ -305,7 +304,7 @@ const FormAddRecipe = ({ onAddRecipe }) => {
         )}
       </Formik>
     </div>
-  )
+  );
 };
 
 export default FormAddRecipe;

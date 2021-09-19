@@ -55,7 +55,12 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
             personnes: recipe.personnes,
             tempsPreparation: recipe.tempsPreparation,
             ingredients: [
-              { quantite: "", unite: "", nom: recipe.ingredients[0][1], id: "" + Math.random() },
+              {
+                quantite: "",
+                unite: "",
+                nom: recipe.ingredients[0][1],
+                id: "" + Math.random(),
+              },
             ],
             etapes: [
               {
@@ -250,7 +255,8 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
                             })
                           }
                         >
-                          <BsPlusCircleFill className="mb-1" /> Ajouter une étape
+                          <BsPlusCircleFill className="mb-1" /> Ajouter une
+                          étape
                         </Button>
                         {values.etapes.map((etape, index) => {
                           return (
@@ -303,7 +309,7 @@ const FormEditRecipe = ({ onEditRecipe, recipe, setRecipe }) => {
       </div>
     );
   }
-  return <> </>
+  return <> </>;
 };
 
 export default FormEditRecipe;

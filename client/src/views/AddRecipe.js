@@ -33,12 +33,7 @@ const AddRecipe = () => {
         setShowAlert(true);
         setSuccessType("creation");
       })
-      .then(history.push({
-        pathname: '/',
-        state: { successType :"creation",
-        showAlert : true,
-       }
-      }));
+      .then(history.push("/"));
   };
   return (
     <>
