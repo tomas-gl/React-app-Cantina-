@@ -106,7 +106,7 @@ const Home = () => {
       setFoundTempsPreparation("");
       if (keyword !== "") {
         const results = recipes.filter((recipe) => {
-          return recipe.personnes <= keyword;
+          return recipe.personnes == keyword;
         });
         setFoundPersonnes(results);
       } else {

@@ -137,7 +137,6 @@ const RecipeDetails = ({ recipe, onOpenModal }) => {
       </Row>
     );
   }
-  return <></>;
 };
 
 export default RecipeDetails;
